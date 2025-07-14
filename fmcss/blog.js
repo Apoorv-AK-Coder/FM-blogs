@@ -13,7 +13,7 @@ const pagination = document.querySelector(".pagination1");
 const suggestionContainer = document.querySelector(".suggested-blogs");
 
 // ✅ 1) Fetch the JSON
-fetch('http://apoorv-ak-coder.github.io/fm-blogs/fmcss/blogs.json')
+fetch('http://apoorv-ak-coder.github.io/FM-blogs/fmcss/blogs.json')
   .then(response => response.json())
   .then(data => {
     products = data;
