@@ -30,11 +30,23 @@
             border: 1px solid #cacaca;
             border-radius: 10px;
             cursor: pointer;
+            position: relative;
 
             a {
                 color: var(--third-color) !important;
                 text-decoration: underline;
             }
+        }
+
+        #datepara {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            background-color: var(--primary-color);
+            color: var(--fourth-color);
+            padding: 5px 20px !important;
+            border-radius: 10px 0 10px 0;
+            font-size: 15px !important;
         }
     }
 
