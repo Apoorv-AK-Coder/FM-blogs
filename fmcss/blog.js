@@ -12,7 +12,7 @@ const searchInput = document.querySelector(".search-column input[type='search']"
 const pagination = document.querySelector(".pagination1");
 const suggestionContainer = document.querySelector(".suggested-blogs");
 
-fetch('../fmcss/blogs.json')
+fetch('https://apoorv-ak-coder.github.io/FM-blogs/fmcss/blogs.json')
   .then(response => response.json())
   .then(data => {
     products = data;
