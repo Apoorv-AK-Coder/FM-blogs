@@ -10,16 +10,54 @@ const nextBtn = document.getElementById("next-btn");
 const pageNumberSpan = document.getElementById("page-number");
 const searchInput = document.querySelector(".search-column input[type='search']");
 const pagination = document.querySelector(".pagination1");
+const suggestionContainer = document.querySelector(".suggested-blogs");
 
-fetch('https://apoorv-ak-coder.github.io/FM-blogs/fmcss/blogs.json') // ✅ Adjust path as needed
+// ✅ 1) Fetch the JSON
+fetch('http://apoorv-ak-coder.github.io/fm-blogs/fmcss/blogs.json')
   .then(response => response.json())
   .then(data => {
     products = data;
     currentProducts = [...products];
-    renderProducts();
+
+    // ✅ 2) Render productContainer if it exists
+    if (productContainer) {
+      renderProducts();
+
+      prevBtn?.addEventListener("click", () => {
+        if (currentPage > 1) {
+          currentPage--;
+          renderProducts();
+        }
+      });
+
+      nextBtn?.addEventListener("click", () => {
+        if (currentPage < Math.ceil(currentProducts.length / productsPerPage)) {
+          currentPage++;
+          renderProducts();
+        }
+      });
+
+      searchInput?.addEventListener("input", () => {
+        const term = searchInput.value.trim().toLowerCase();
+        currentProducts = term
+          ? products.filter(p => p.name.toLowerCase().includes(term))
+          : [...products];
+        currentPage = 1;
+        showAllPages = false;
+        pagination.style.display = term ? "none" : "flex";
+        renderProducts();
+      });
+    }
+
+    // ✅ 3) Render suggestionContainer if it exists
+    if (suggestionContainer) {
+      renderSuggestions();
+    }
   })
   .catch(error => console.error("Error loading products:", error));
 
+
+// ✅ Functions
 function renderProducts() {
   productContainer.innerHTML = "";
   const start = (currentPage - 1) * productsPerPage;
@@ -46,99 +84,68 @@ function renderProducts() {
 }
 
 function updatePagination() {
-    const totalPages = Math.ceil(currentProducts.length / productsPerPage);
-    pagination.style.display = totalPages > 1 && currentProducts.length !== products.length ? "none" : "flex";
+  const totalPages = Math.ceil(currentProducts.length / productsPerPage);
+  pagination.style.display = totalPages > 1 && currentProducts.length !== products.length ? "none" : "flex";
 
-    prevBtn.disabled = currentPage === 1;
-    nextBtn.disabled = currentPage === totalPages;
+  prevBtn.disabled = currentPage === 1;
+  nextBtn.disabled = currentPage === totalPages;
 
-    pageNumberSpan.innerHTML = "";
+  pageNumberSpan.innerHTML = "";
 
-    if (showAllPages || totalPages <= 7) {
-        for (let i = 1; i <= totalPages; i++) createPageBtn(i);
-    } else {
-        createPageBtn(1);
-        createPageBtn(2);
-        createPageBtn(3);
+  if (showAllPages || totalPages <= 7) {
+    for (let i = 1; i <= totalPages; i++) createPageBtn(i);
+  } else {
+    createPageBtn(1);
+    createPageBtn(2);
+    createPageBtn(3);
 
-        if (currentPage > 4) addEllipsis();
-        if (currentPage > 3 && currentPage < totalPages - 2) createPageBtn(currentPage);
-        if (currentPage < totalPages - 3) addEllipsis();
+    if (currentPage > 4) addEllipsis();
+    if (currentPage > 3 && currentPage < totalPages - 2) createPageBtn(currentPage);
+    if (currentPage < totalPages - 3) addEllipsis();
 
-        createPageBtn(totalPages - 2);
-        createPageBtn(totalPages - 1);
-        createPageBtn(totalPages);
-    }
+    createPageBtn(totalPages - 2);
+    createPageBtn(totalPages - 1);
+    createPageBtn(totalPages);
+  }
 }
 
 function createPageBtn(num) {
-    const btn = document.createElement("button");
-    btn.textContent = num;
-    if (num === currentPage) btn.classList.add("active");
-    btn.addEventListener("click", () => {
-        currentPage = num;
-        renderProducts();
-    });
-    pageNumberSpan.appendChild(btn);
+  const btn = document.createElement("button");
+  btn.textContent = num;
+  if (num === currentPage) btn.classList.add("active");
+  btn.addEventListener("click", () => {
+    currentPage = num;
+    renderProducts();
+  });
+  pageNumberSpan.appendChild(btn);
 }
 
 function addEllipsis() {
-    const span = document.createElement("span");
-    span.textContent = "...";
-    span.classList.add("ellipsis");
-    span.addEventListener("click", () => {
-        showAllPages = true;
-        updatePagination();
-    });
-    pageNumberSpan.appendChild(span);
+  const span = document.createElement("span");
+  span.textContent = "...";
+  span.classList.add("ellipsis");
+  span.addEventListener("click", () => {
+    showAllPages = true;
+    updatePagination();
+  });
+  pageNumberSpan.appendChild(span);
 }
 
-const suggestionContainer = document.querySelector(".suggested-blogs");
-
-if (productContainer) {
-  renderProducts();
-
-  prevBtn?.addEventListener("click", () => {
-    if (currentPage > 1) {
-      currentPage--;
-      renderProducts();
-    }
-  });
-
-  nextBtn?.addEventListener("click", () => {
-    if (currentPage < Math.ceil(currentProducts.length / productsPerPage)) {
-      currentPage++;
-      renderProducts();
-    }
-  });
-
-  searchInput?.addEventListener("input", () => {
-    const term = searchInput.value.trim().toLowerCase();
-    currentProducts = term
-      ? products.filter(p => p.name.toLowerCase().includes(term))
-      : [...products];
-
-    currentPage = 1;
-    showAllPages = false;
-    pagination.style.display = term ? "none" : "flex";
-    renderProducts();
-  });
-
-} else if (suggestionContainer) {
+function renderSuggestions() {
   const itemsToShow = products.slice(0, 8);
   suggestionContainer.innerHTML = "";
   itemsToShow.forEach(product => {
     suggestionContainer.innerHTML += `
       <div class="column grid grid1">
-        <div class="image-container" style="background-image: url(${product.image});"></div>
+        <div class="image-container" style="background-image: url(${product.images});"></div>
         <div class="innerblog">
-        <p><b>${product.name}</b></p>
-        <p>
-        <a href="${product.link}">Read More <i class="fa-solid fa-angles-right"></i></a>
-        </p>
+          <p><b>${product.name}</b></p>
+          <p>
+            <a href="${product.link}">Read More <i class="fa-solid fa-angles-right"></i></a>
+          </p>
         </div>
-        </div>
-        `;
+      </div>
+    `;
   });
 }
 
