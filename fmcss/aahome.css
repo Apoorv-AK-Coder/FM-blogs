@@ -146,10 +146,19 @@
         gap: 15px;
         display: grid;
 
-        p,
+        p {
+            line-height: 1.5 !important;
+            font-size: 13px !important;
+        }
+
         a {
             line-height: 1.5 !important;
-            font-size: 14px !important;
+            font-size: 15px !important;
+        }
+
+        img {
+            width: 100%;
+            border-radius: 10px 0 0 10px;
         }
 
         .innerblog {
@@ -161,6 +170,7 @@
             background-repeat: no-repeat;
             background-size: cover;
             border-radius: 10px 0 0 10px;
+            height: 125px;
         }
 
         .column {

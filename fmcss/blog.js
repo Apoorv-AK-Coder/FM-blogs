@@ -63,7 +63,7 @@ function renderProducts() {
   pageItems.forEach(product => {
     productContainer.innerHTML += `
       <div class="column">
-        <img src="${product.images}" alt="${product.name}">
+        <img src=".${product.images}" alt="${product.name}">
         <div class="innerblog">
           <h4>${product.name}</h4>
           <p>${product.para}</p>
@@ -128,12 +128,13 @@ function addEllipsis() {
 }
 
 function renderSuggestions() {
-  const itemsToShow = products.slice(0, 8);
+  const itemsToShow = products.slice(0, 6);
   suggestionContainer.innerHTML = "";
   itemsToShow.forEach(product => {
     suggestionContainer.innerHTML += `
       <div class="column grid grid1">
-        <div class="image-container" style="background-image: url(${product.images});"></div>
+        <img src="..${product.images}" alt="${product.name}">
+        
         <div class="innerblog">
           <p><b>${product.name}</b></p>
           <p style="margin-top: 5px !important;">
