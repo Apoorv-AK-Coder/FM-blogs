@@ -12,14 +12,12 @@ const searchInput = document.querySelector(".search-column input[type='search']"
 const pagination = document.querySelector(".pagination1");
 const suggestionContainer = document.querySelector(".suggested-blogs");
 
-// ✅ 1) Fetch the JSON
-fetch('http://apoorv-ak-coder.github.io/FM-blogs/fmcss/blogs.json')
+fetch('../fmcss/blogs.json')
   .then(response => response.json())
   .then(data => {
     products = data;
     currentProducts = [...products];
 
-    // ✅ 2) Render productContainer if it exists
     if (productContainer) {
       renderProducts();
 
@@ -49,7 +47,6 @@ fetch('http://apoorv-ak-coder.github.io/FM-blogs/fmcss/blogs.json')
       });
     }
 
-    // ✅ 3) Render suggestionContainer if it exists
     if (suggestionContainer) {
       renderSuggestions();
     }
@@ -57,7 +54,6 @@ fetch('http://apoorv-ak-coder.github.io/FM-blogs/fmcss/blogs.json')
   .catch(error => console.error("Error loading products:", error));
 
 
-// ✅ Functions
 function renderProducts() {
   productContainer.innerHTML = "";
   const start = (currentPage - 1) * productsPerPage;
@@ -140,7 +136,7 @@ function renderSuggestions() {
         <div class="image-container" style="background-image: url(${product.images});"></div>
         <div class="innerblog">
           <p><b>${product.name}</b></p>
-          <p>
+          <p style="margin-top: 5px !important;">
             <a href="${product.link}">Read More <i class="fa-solid fa-angles-right"></i></a>
           </p>
         </div>
@@ -148,62 +144,3 @@ function renderSuggestions() {
     `;
   });
 }
-
-
-// ✅ Text-to-Speech setup
-const synth = window.speechSynthesis;
-let utterance = null;
-let isPaused = false;
-
-const volumeIcon = document.getElementById("volume-icon");
-const playIcon = document.getElementById("play-icon");
-const pauseIcon = document.getElementById("pause-icon");
-const blogContent = document.querySelector(".blog-content");
-
-function clearActiveClasses() {
-  volumeIcon.classList.remove("active");
-  playIcon.classList.remove("active");
-  pauseIcon.classList.remove("active");
-}
-
-if (blogContent && volumeIcon && playIcon && pauseIcon) {
-  volumeIcon.addEventListener("click", () => {
-    if (synth.speaking) {
-      synth.cancel();
-      console.log("Speech stopped (mute).");
-    }
-    clearActiveClasses();
-    volumeIcon.classList.add("active");
-  });
-
-  playIcon.addEventListener("click", () => {
-    const text = blogContent.innerText;
-    if (!synth.speaking || isPaused) {
-      if (isPaused) {
-        synth.resume();
-        isPaused = false;
-        console.log("Speech resumed.");
-      } else {
-        utterance = new SpeechSynthesisUtterance(text);
-        synth.speak(utterance);
-        console.log("Speech started.");
-      }
-    }
-    clearActiveClasses();
-    playIcon.classList.add("active");
-  });
-
-  pauseIcon.addEventListener("click", () => {
-    if (synth.speaking) {
-      synth.pause();
-      isPaused = true;
-      console.log("Speech paused.");
-    }
-    clearActiveClasses();
-    pauseIcon.classList.add("active");
-  });
-}
-
-window.addEventListener("beforeunload", () => {
-  window.speechSynthesis.cancel();
-});
