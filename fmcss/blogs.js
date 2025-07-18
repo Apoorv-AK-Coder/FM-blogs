@@ -12,7 +12,7 @@ const searchInput = document.querySelector(".search-column input[type='search']"
 const pagination = document.querySelector(".pagination1");
 const suggestionContainer = document.querySelector(".suggested-blogs");
 
-fetch('/fmcss/blogs.json')
+fetch('https://apoorv-ak-coder.github.io/FM-blogs/fmcss/blogs.json')
   .then(response => response.json())
   .then(data => {
     products = data;
@@ -63,13 +63,13 @@ function renderProducts() {
   pageItems.forEach(product => {
     productContainer.innerHTML += `
       <div class="column">
-        <img src=".${product.images}" alt="${product.name}">
+        <img src="https://apoorv-ak-coder.github.io/FM-blogs/assets/images/blog/${product.images}" alt="${product.name}">
         <div class="innerblog">
           <h4>${product.name}</h4>
           <p>${product.para}...</p>
           <p><span id="datepara"><i class="fa-solid fa-calendar-days"></i> &nbsp;${product.date}</span></p>
           <p style="margin-top: 5px !important;">
-            <a href="${product.link}">Read More <i class="fa-solid fa-angles-right"></i></a>
+            <a href="https://www.faresmatch.com/blog/${product.link}">Read More <i class="fa-solid fa-angles-right"></i></a>
           </p>
         </div>
       </div>
@@ -133,11 +133,11 @@ function renderSuggestions() {
   itemsToShow.forEach(product => {
     suggestionContainer.innerHTML += `
       <div class="column grid grid1">
-        <img src="..${product.images}" alt="${product.name}">
+        <img src="https://apoorv-ak-coder.github.io/FM-blogs/assets/images/blog/${product.images}" alt="${product.name}">
         <div class="innerblog">
           <p><b>${product.name}</b></p>
           <p style="margin-top: 5px !important;">
-            <a href="${product.link}">Read More <i class="fa-solid fa-angles-right"></i></a>
+            <a href="https://www.faresmatch.com/blog/${product.link}">Read More <i class="fa-solid fa-angles-right"></i></a>
           </p>
         </div>
       </div>
