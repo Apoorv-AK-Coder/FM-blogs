@@ -66,7 +66,7 @@ function renderProducts() {
         <img src=".${product.images}" alt="${product.name}">
         <div class="innerblog">
           <h4>${product.name}</h4>
-          <p>${product.para}</p>
+          <p>${product.para}...</p>
           <p><span id="datepara"><i class="fa-solid fa-calendar-days"></i> &nbsp;${product.date}</span></p>
           <p style="margin-top: 5px !important;">
             <a href="${product.link}">Read More <i class="fa-solid fa-angles-right"></i></a>
@@ -134,7 +134,6 @@ function renderSuggestions() {
     suggestionContainer.innerHTML += `
       <div class="column grid grid1">
         <img src="..${product.images}" alt="${product.name}">
-        
         <div class="innerblog">
           <p><b>${product.name}</b></p>
           <p style="margin-top: 5px !important;">
