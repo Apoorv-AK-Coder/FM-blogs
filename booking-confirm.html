@@ -117,10 +117,12 @@
                         <div class="inner1">
                             <h2>Flight Details</h2>
                             <div class="flightdetailsrow">
-                                <div class="cardheader flex">
-                                    <p style="flex: 1;"><i class="fa-solid fa-plane"></i> <b>JFK <i class="fa-solid fa-arrow-right-long"></i> DEN</b> &nbsp;&nbsp;|&nbsp;&nbsp; Economy 1 stop <i
-                                            class="fa-solid fa-clock"></i> <b>Duration: </b>7h 22m</p>
-                                            <p><b>Departure</b></p>
+                                <div class="cardheader d-flex">
+                                    <p style="flex: 1;"><i class="fa-solid fa-plane"></i> <b>JFK <i
+                                                class="fa-solid fa-arrow-right-long"></i> DEN</b>
+                                        &nbsp;&nbsp;|&nbsp;&nbsp; Economy 1 stop <i class="fa-solid fa-clock"></i>
+                                        <b>Duration: </b>7h 22m</p>
+                                    <p><b>Departure</b></p>
                                 </div>
                                 <div class="innerrow">
                                     <div class="flex gap2">
@@ -159,13 +161,13 @@
                                         <td>1.</td>
                                         <td>Test1</td>
                                         <td>Male</td>
-                                        <td>DD-MM-YYYY</td>
+                                        <td>31-12-1998</td>
                                     </tr>
                                     <tr>
                                         <td>2.</td>
                                         <td>Test2</td>
                                         <td>Female</td>
-                                        <td>DD-MM-YYYY</td>
+                                        <td>10-10-1996</td>
                                     </tr>
                                 </table>
                                 <br>
@@ -179,8 +181,8 @@
                                     <tr>
                                         <td>JFK</td>
                                         <td>DEN</td>
-                                        <td>29-07-25</td>
-                                        <td>02-08-25</td>
+                                        <td>29-07-2025</td>
+                                        <td>02-08-2025</td>
                                     </tr>
                                 </table>
                             </div>
@@ -375,12 +377,12 @@
 
                     .flex {
                         p {
-                        font-size: 15px;
-                    }
+                            font-size: 15px;
+                        }
 
-                    div {
-                        flex: 1;
-                    }
+                        div {
+                            flex: 1;
+                        }
                     }
                 }
             }
@@ -396,11 +398,11 @@
 
                 td,
                 th {
-                    min-width: 90px;
+                    min-width: 105px;
                 }
 
                 th {
-                    font-size: 15px;
+                    font-size: 14px;
                 }
 
                 .flightdetailsrow {
@@ -411,6 +413,14 @@
                             grid-column: span 3;
                         }
                     }
+                }
+
+                .maincoldetail {
+                    padding: 10px;
+                }
+
+                .row {
+                    padding-block: 20px;
                 }
             }
         }
