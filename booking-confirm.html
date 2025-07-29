@@ -82,7 +82,7 @@
                     <div class="grid grid2">
                         <img src="https://www.eazair.com/images/logo.png" alt="">
                         <div></div>
-                        <div>
+                        <div class="righttext">
                             <h2>Booking Confirmation <i class="fa-solid fa-circle-check" style="color: #fff;"></i>
                             </h2>
                             <p>
@@ -104,7 +104,7 @@
                             <p><b>Phone Number: </b>+1-000-000-0000</p>
                             <p><b>Address: </b>New Delhi, 110092</p>
                         </div>
-                        <div style="text-align: right;">
+                        <div class="righttext">
                             <h2>Booking Details</h2>
                             <p><b>Booking Id #: </b>000000</p>
                             <p><b>Booking Date: </b>28-07-25</p>
@@ -186,10 +186,6 @@
                                     </tr>
                                 </table>
                             </div>
-                            <br>
-                            <div class="tablediv">
-
-                            </div>
                         </div>
                         <div class="inner2">
                             <h3>Price Summary</h3>
@@ -254,24 +250,19 @@
                 border-radius: 10px;
             }
 
+            .righttext {
+                text-align: right;
+            }
+
             .maincolhead {
                 background-color: #0B3D91;
                 padding: 15px 20px 10px 20px;
                 border-radius: 7px 7px 0 0;
 
-                div {
-                    text-align: right;
-                }
-
                 a,
-                p {
+                p, h2 {
                     color: #fff !important;
                     font-size: 15px;
-                }
-
-                h2 {
-                    color: #fff !important;
-                    text-align: right;
                 }
 
                 img {
@@ -395,6 +386,9 @@
             }
 
             .Confirm-Booking {
+                .righttext {
+                    text-align: left;
+                }
 
                 td,
                 th {
