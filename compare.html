@@ -102,6 +102,9 @@
                                     <a href="https://www.faresmatch.com/">
                                         <h4>Faresmatch</h4>
                                     </a>
+                                    <p><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i
+                                            class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i
+                                            class="fa-solid fa-star"></i></p>
                                 </div>
                                 <div style="flex: 1;">
                                     <hr>
@@ -119,6 +122,9 @@
                                     <a href="https://www.eazair.com">
                                         <h4>Eazair</h4>
                                     </a>
+                                    <p><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i
+                                            class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i
+                                            class="fa-solid fa-star"></i></p>
                                 </div>
                                 <div style="flex: 1;">
                                     <hr>
@@ -136,6 +142,9 @@
                                     <a href="https://www.businessclassdeal.com">
                                         <h4>BusinessClassDeal</h4>
                                     </a>
+                                    <p><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i
+                                            class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i
+                                            class="fa-solid fa-star"></i></p>
                                 </div>
                                 <div style="flex: 1;">
                                     <hr>
@@ -153,6 +162,9 @@
                                     <a href="https://www.faressaver.com">
                                         <h4>FaresSaver</h4>
                                     </a>
+                                    <p><i class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i
+                                            class="fa-solid fa-star"></i> <i class="fa-solid fa-star"></i> <i
+                                            class="fa-solid fa-star"></i></p>
                                 </div>
                                 <div style="flex: 1;">
                                     <hr>
@@ -236,7 +248,8 @@
                         </div>
 
                         <div class="addvertiserow">
-                            <img src="https://www.eazair.com/images/behold-the-wilderness-on-an-alaska-helicopter-tour.jpg" alt="">
+                            <img src="https://www.eazair.com/images/behold-the-wilderness-on-an-alaska-helicopter-tour.jpg"
+                                alt="">
                             <div class="innercol">
                                 <p><b>Lorem Ipsum is dummy text</b></p>
                                 <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
@@ -364,6 +377,10 @@
             display: grid;
             gap: 15px;
 
+            .fa-star {
+                color: #f36c3b;
+            }
+
             img {
                 width: 75px;
                 padding: 5px;
@@ -403,6 +420,7 @@
             box-shadow: 0 0 2px 2px rgba(20, 20, 20, 0.1);
             border-radius: 10px;
             margin-top: 15px;
+
             img {
                 width: 100%;
                 border-radius: 10px 10px 0 0;
@@ -435,6 +453,17 @@
                 h4 {
                     font-size: 17px !important;
                 }
+            }
+        }
+
+        @media (max-width: 991px) {
+            .summaryCol {
+                display: block;
+                width: 100%;
+            }
+
+            .summaryDiv, .bookingCall {
+                display: none;
             }
         }
     </style>
