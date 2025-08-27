@@ -12,7 +12,7 @@ const searchInput = document.querySelector(".search-column input[type='search']"
 const pagination = document.querySelector(".pagination1");
 const suggestionContainer = document.querySelector(".suggested-blogs");
 
-fetch('https://apoorv-ak-coder.github.io/FM-blogs/fmcss/blogs.json')
+fetch('/fmcss/blogs.json')
   .then(response => response.json())
   .then(data => {
     products = data;
@@ -63,7 +63,7 @@ function renderProducts() {
   pageItems.forEach(product => {
     productContainer.innerHTML += `
       <div class="column">
-        <img src="https://apoorv-ak-coder.github.io/FM-blogs/assets/images/blog/${product.images}" alt="${product.name}">
+        <img src="/assets/images/blog/${product.images}" alt="${product.name}">
         <div class="innerblog">
           <h4>${product.name}</h4>
           <p>${product.para}...</p>
