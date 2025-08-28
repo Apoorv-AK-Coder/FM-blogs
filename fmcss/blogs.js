@@ -133,7 +133,7 @@ function renderSuggestions() {
   itemsToShow.forEach(product => {
     suggestionContainer.innerHTML += `
       <div class="column grid grid1">
-        <img src="https://apoorv-ak-coder.github.io/FM-blogs/assets/images/blog/${product.images}" alt="${product.name}">
+        <img src="/assets/images/blog/${product.images}" alt="${product.name}">
         <div class="innerblog">
           <p><b>${product.name}</b></p>
           <p style="margin-top: 5px !important;">
